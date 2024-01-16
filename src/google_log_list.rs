@@ -54,9 +54,9 @@ pub enum LogState {
 }
 
 impl LogList {
-  /// Download the log list at runtime from [`https://www.gstatic.com/ct/log_list/v2/log_list.json`](https://www.gstatic.com/ct/log_list/v2/log_list.json).
+  /// Download the log list at runtime from [`https://www.gstatic.com/ct/log_list/v3/log_list.json`](https://www.gstatic.com/ct/log_list/v3/log_list.json).
   pub fn get() -> Result<LogList, Error> {
-    LogList::get_with_url("https://www.gstatic.com/ct/log_list/v2/log_list.json")
+    LogList::get_with_url("https://www.gstatic.com/ct/log_list/v3/log_list.json")
   }
 
   /// Download the log list at runtime.
@@ -111,5 +111,5 @@ fn test() {
   let ll = LogList::get().unwrap();
   let nb_logs = ll.map_id_to_log.len();
   assert!(nb_logs > 0);
-  assert_eq!(ll.find_by_id(&base64::decode("sh4FzIuizYogTodm+Su5iiUgZ2va+nDnsklTLe+LkF4=").unwrap()).unwrap().base_url, "https://ct.googleapis.com/logs/argon2020/");
+  assert_eq!(ll.find_by_id(&base64::decode("zxFW7tUufK/zh1vZaS6b6RpxZ0qwF+ysAdJbd87MOwg=").unwrap()).unwrap().base_url, "https://ct.googleapis.com/logs/eu1/xenon2025h1/");
 }

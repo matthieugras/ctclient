@@ -31,7 +31,7 @@ pub fn new_http_client() -> Result<reqwest::blocking::Client, Error> {
   def_headers.insert("User-Agent", reqwest::header::HeaderValue::from_static("rust-ctclient"));
   match reqwest::blocking::Client::builder()
       .connect_timeout(time::Duration::from_secs(5))
-      .tcp_nodelay()
+      .tcp_nodelay(false)
       .gzip(true)
       .default_headers(def_headers)
       .redirect(reqwest::redirect::Policy::none())
